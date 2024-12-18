@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Thien Nguyen - About Me{% endblock %}
+<!--<!DOCTYPE html>
+<html lang="en">-->
+{% block header %}
+    <h2>YOUR CONTACT</h2>
+    <h1>Be honest with yourself</h1>
+{% endblock %}
+{% block content %}
+    <!-- Flash Message Section -->
+    <form id="flaskMessage">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+                <hr>
+            {% endif %}
+        {% endwith %}
+    </form>
+
+    <!-- Save Contacts Button -->
+    <h3>Leave your contact. I will contact you</h3>
+    <form id="contactForm" action="/save_contact" method="POST"> <!-- Process form -->
+        <!-- First Row: Name and Email -->
+        <div style="display: flex; gap: 10px;">
+            <div style="flex: 4;">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required style="width: 95%;">
+                </div>
+            </div>
+            <div style="flex: 4;">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required style="width: 95%;">
+                </div>
+            </div>
+            <div style="flex: 2;">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <button type="submit">Submit</button>
+        <hr>
+    </form>
+
+    <!-- Export Contacts Button -->
+    <form action="/export_contacts" method="POST" style="margin-top: 40px";>
+        <div class="form-group">
+            <label for="verification_key">Enter Verification Key:</label>
+            <input type="text" id="verification_key" name="verification_key" required>
+        </div>
+        <button type="submit">Export Contacts</button>
+    </form>
+{% endblock %}

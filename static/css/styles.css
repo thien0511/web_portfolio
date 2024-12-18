@@ -1,0 +1,161 @@
+body {
+    margin: 0; /* Removes default margin around the body */
+    font-family: Arial, sans-serif; /* Sets a clean, readable font */
+    background-color: #f9f9f9;
+    display: grid; /* Defines a grid layout for the page */
+    grid-template-rows: auto 1fr auto; /* Creates three rows: header (auto height), main content (fills space), footer (auto height) */
+    grid-template-columns: 20% 1fr; /* Divides layout into two columns: side navigation (20%) and main content (remaining space) */
+    height: 100vh; /* Ensures the grid spans the full height of the viewport */
+}
+
+/* Header Section */
+header {
+    grid-column: span 2; /* Makes the header span across both columns */
+    width: 100%; /* Ensures the header takes up the full width */
+    background-color: #f4f4f4; /* Sets a light gray background for the header */
+    padding: 30px 0; /* Adds vertical padding for spacing */
+    /*position: sticky; /* Keeps the header fixed at the top while scrolling */
+    top: 0; /* Ensures the sticky position starts from the top of the viewport */
+    z-index: 1000; /* Ensures the header appears above other elements */
+    text-align: center; /* Centers the header content */
+    background: url('../images/top_banner2.jpg') no-repeat center center/cover; /* Adds a background image with proper scaling and positioning */
+    color: #2C3E50; /* Sets the text color to blue */
+}
+
+.header-container {
+    text-align: center; /* Centers the text within the header container */
+}
+
+.header-container h1 {
+    margin: 0; /* Removes default margin for the heading */
+    padding-top: 20px; /* Adds space above the heading text */
+    font-size: 3em; /* Sets a large font size for the main heading */
+}
+
+.header-container p {
+    margin: 10px 0 0; /* Adds spacing between the paragraph and heading */
+    font-size: 1.2em; /* Increases the font size for better readability */
+}
+
+/* Top Navigation */
+.top-nav {
+    position: absolute; /* Positions the navigation links absolutely within the header */
+    top: 10px; /* Positions the navigation links 10px from the top of the header */
+    right: 50px; /* Positions the navigation links 50px from the right edge of the header */
+}
+
+.top-nav a {
+    text-decoration: none; /* Removes underlines from the links */
+    margin: 0 10px; /* Adds horizontal spacing between links */
+    color: #333; /* Sets the link color to dark gray */
+    font-weight: bold; /* Makes the links bold */
+}
+
+.top-nav a:hover {
+    color: #007BFF; /* Changes the link color to blue when hovered over */
+}
+
+/* Side Navigation */
+.side-nav {
+    height: 100%; /* Ensures the side navigation spans the full height of the viewport */
+    grid-row: 2; /* Places the side navigation in the second row */
+    grid-column: 1; /* Positions the side navigation in the first column */
+    background-color: #f4f4f4; /* Sets a light gray background */
+    padding: 20px; /* Adds inner spacing for content */
+    overflow-y: auto; /* Allows vertical scrolling if the content exceeds the viewport height */
+}
+
+.side-nav a {
+    display: block; /* Makes each link appear on a new line */
+    text-decoration: none; /* Removes underlines from the links */
+    color: #333; /* Sets the link color to dark gray */
+    margin-bottom: 15px; /* Adds spacing between links */
+    font-size: 1.1em; /* Slightly increases the font size for readability */
+}
+
+.side-nav a:hover {
+    color: #007BFF; /* Changes the link color to blue when hovered over */
+}
+
+/* Main Content */
+main {
+    grid-row: 2; /* Places the main content in the second row */
+    grid-column: 2; /* Positions the main content in the second column, next to the side navigation */
+    padding: 50px; /* Adds inner spacing for content */
+    /*overflow-y: auto; /* Allows vertical scrolling for long content */
+    margin-left: 20px; /* Adds space to account for the side navigation */
+}
+
+/* Footer Section */
+footer {
+    grid-column: span 2; /* Makes the footer span across both columns */
+    background-color: #333; /* Sets a dark background color for the footer */
+    color: white; /* Sets the text color to white for contrast */
+    text-align: center; /* Centers the text in the footer */
+    padding: 10px 0; /* Adds vertical padding for spacing */
+    font-size: 0.9em; /* Sets a slightly smaller font size for footer text */
+}
+
+footer a {
+    color: #00bfff; /* Sets the link color to a bright blue */
+    text-decoration: none; /* Removes underlines from the links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adds an underline to links when hovered over */
+}
+
+/* projects */
+.project {
+    margin-bottom: 30px;
+}
+.project h2 {
+    color: #555;
+}
+.project p {
+    margin: 5px 0;
+}
+
+.container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 20%;
+            padding: 10px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .alert-success { background-color: #d4edda; color: #155724; }
+        .alert-error { background-color: #f8d7da; color: #721c24; }

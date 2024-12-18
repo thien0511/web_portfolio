@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}{{ blog.title }}{% endblock %}
+{% block content %}
+<a href="{{ url_for('blog_list') }}">Back to Blog List</a>
+<h2>{{ blog.title }}</h2>
+<p><small>Published on {{ blog.date_created.strftime('%B %d, %Y %H:%M') }}</small></p>
+<p>{{ blog.content }}</p>
+
+<h3>Comments</h3>
+{% if blog.comments %}
+    {% for comment in blog.comments %}
+        <div>
+            <p><strong>{{ comment.name }}</strong> says:</p>
+            <p>{{ comment.content }}</p>
+            <small>Posted on {{ comment.date_created.strftime('%B %d, %Y %H:%M') }}</small>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No comments yet. Be the first to comment!</p>
+{% endif %}
+
+<h3>Add a Comment</h3>
+<form method="POST" action="{{ url_for('add_comment', blog_id=blog.id) }}">
+    <label for="name">Your Name:</label><br>
+    <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
+    <label for="content">Your Comment:</label><br>
+    <textarea name="content" id="content" rows="3" placeholder="Write your comment here..." required></textarea><br><br>
+    <button type="submit">Submit Comment</button>
+</form>
+{% endblock %}

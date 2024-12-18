@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Thien Nguyen - Blog List{% endblock %}
+{% block header %}
+    <h2>BLOG LIST</h2>
+    <h1>Be honest with yourself</h1>
+{% endblock %}
+{% block content %}
+<h2>All Blogs</h2>
+{% for blog in blogs %}
+    <div>
+        <h3>{{ blog.title }}</h3>
+        <p>{{ blog.content[:100] }}...</p>
+        <p><small>Published on {{ blog.date_created.strftime('%B %d, %Y %H:%M') }}</small></p>
+        <a href="{{ url_for('blog_detail', id=blog.id) }}">Read More</a>
+        | <a href="{{ url_for('delete_blog', id=blog.id) }}">Delete</a>
+    </div>
+{% else %}
+    <p>No blogs yet.</p>
+{% endfor %}
+<a href="{{ url_for('add_blog') }}">Add one!</a>
+{% endblock %}

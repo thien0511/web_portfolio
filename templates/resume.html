@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Thien Nguyen - Resume{% endblock %}
+{% block content %}
+    <section>
+        <h2>My Resume</h2>
+        <p>Explore my projects and skills!</p>
+        <ul>
+            <li><a href="{{ url_for('skills') }}">My Skills</a></li>
+            <li><a href="{{ url_for('projects') }}">My Projects</a></li>
+            <li><a href="{{ url_for('static', filename='Nguyen_Duc_Thien_CV_EN_2024-11.docx') }}" download>Download Resume</a></li>
+        </ul>
+
+    </section>
+{% endblock %}
