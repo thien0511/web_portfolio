@@ -13,13 +13,32 @@ header {
     grid-column: span 2; /* Makes the header span across both columns */
     width: 100%; /* Ensures the header takes up the full width */
     background-color: #f4f4f4; /* Sets a light gray background for the header */
-    padding: 30px 0; /* Adds vertical padding for spacing */
+    padding: 0px 0; /* Adds vertical padding for spacing */
     /*position: sticky; /* Keeps the header fixed at the top while scrolling */
     top: 0; /* Ensures the sticky position starts from the top of the viewport */
     z-index: 1000; /* Ensures the header appears above other elements */
     text-align: center; /* Centers the header content */
-    background: url('../images/top_banner2.jpg') no-repeat center center/cover; /* Adds a background image with proper scaling and positioning */
+
     color: #2C3E50; /* Sets the text color to blue */
+    display: grid; /* Enables grid layout */
+    grid-template-rows: auto auto; /* Defines two rows */
+}
+
+/* First Row */
+header .row-1 {
+    background: url('../images/top_banner21.jpg') no-repeat center center/cover;
+    height: 150px; /* Adjust as needed for the banner height */
+}
+
+/* Second Row */
+header .row-2 {
+    background-color: #f4f4f4;
+    height: 50px; /* Adjust as needed for the second row height */
+    text-align: center; /* Centers text within this row */
+    display: flex; /* Centers content vertically and horizontally */
+    align-items: center;
+    justify-content: right;
+    color: #2C3E50; /* Text color */
 }
 
 .header-container {
@@ -39,7 +58,7 @@ header {
 
 /* Top Navigation */
 .top-nav {
-    position: absolute; /* Positions the navigation links absolutely within the header */
+    /*position: absolute; /* Positions the navigation links absolutely within the header */
     top: 10px; /* Positions the navigation links 10px from the top of the header */
     right: 50px; /* Positions the navigation links 50px from the right edge of the header */
 }
@@ -48,11 +67,12 @@ header {
     text-decoration: none; /* Removes underlines from the links */
     margin: 0 10px; /* Adds horizontal spacing between links */
     color: #333; /* Sets the link color to dark gray */
-    font-weight: bold; /* Makes the links bold */
+    /* font-weight: bold; /* Makes the links bold */
 }
 
 .top-nav a:hover {
     color: #007BFF; /* Changes the link color to blue when hovered over */
+    font-weight: bold;
 }
 
 /* Side Navigation */
@@ -61,7 +81,7 @@ header {
     grid-row: 2; /* Places the side navigation in the second row */
     grid-column: 1; /* Positions the side navigation in the first column */
     background-color: #f4f4f4; /* Sets a light gray background */
-    padding: 20px; /* Adds inner spacing for content */
+    padding: 0px; /* Adds inner spacing for content */
     overflow-y: auto; /* Allows vertical scrolling if the content exceeds the viewport height */
 }
 
@@ -69,12 +89,14 @@ header {
     display: block; /* Makes each link appear on a new line */
     text-decoration: none; /* Removes underlines from the links */
     color: #333; /* Sets the link color to dark gray */
-    margin-bottom: 15px; /* Adds spacing between links */
+    padding-left: 20px;
+    margin-bottom: 5px; /* Adds spacing between links */
     font-size: 1.1em; /* Slightly increases the font size for readability */
 }
 
 .side-nav a:hover {
     color: #007BFF; /* Changes the link color to blue when hovered over */
+    font-weight: bold;
 }
 
 /* Main Content */
@@ -118,9 +140,9 @@ footer a:hover {
 
 .container {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 5px;
             background: #fff;
-            padding: 20px;
+            padding: 10px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }

@@ -9,22 +9,28 @@
 <h3>Comments</h3>
 {% if blog.comments %}
     {% for comment in blog.comments %}
-        <div>
+        <div class="container">
             <p><strong>{{ comment.name }}</strong> says:</p>
             <p>{{ comment.content }}</p>
             <small>Posted on {{ comment.date_created.strftime('%B %d, %Y %H:%M') }}</small>
         </div>
     {% endfor %}
 {% else %}
-    <p>No comments yet. Be the first to comment!</p>
+    <div class="container">
+        <p>No comments yet. Be the first to comment!</p>
+    </div>
 {% endif %}
 
-<h3>Add a Comment</h3>
-<form method="POST" action="{{ url_for('add_comment', blog_id=blog.id) }}">
-    <label for="name">Your Name:</label><br>
-    <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
-    <label for="content">Your Comment:</label><br>
-    <textarea name="content" id="content" rows="3" placeholder="Write your comment here..." required></textarea><br><br>
-    <button type="submit">Submit Comment</button>
+<form method="POST" action="{{ url_for('add_comment', blog_id=blog.id) }}" style="max-width: 500px; margin: 20px auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+    <h2 style="text-align: center; color: #2C3E50;">Leave a Comment</h2>
+
+    <label for="name" style="display: block; font-weight: bold; margin-bottom: 5px; color: #2C3E50;">Your Name:</label>
+    <input type="text" name="name" id="name" placeholder="Enter your name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box;">
+
+    <label for="content" style="display: block; font-weight: bold; margin-bottom: 5px; color: #2C3E50;">Your Comment:</label>
+    <textarea name="content" id="content" rows="3" placeholder="Write your comment here..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box;"></textarea>
+
+    <button type="submit" style="width: 100%; padding: 10px; background-color: #2C3E50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Submit Comment</button>
 </form>
+
 {% endblock %}

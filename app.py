@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify, render_template, send_file, redirect,
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 import os
-from datetime import datetime, timezone
+from datetime import datetime
+from pytz import timezone
 from sqlalchemy import desc
 
 app = Flask(__name__)
@@ -19,7 +20,7 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    date_created = db.Column(db.DateTime, default=lambda: datetime.now())
+    date_created = db.Column(db.DateTime, default=lambda: datetime.now(timezone('Asia/Bangkok')))
     # Relationship with Comment
     comments = db.relationship('Comment', cascade="all, delete-orphan", backref='blog', lazy=True)
 
@@ -28,7 +29,7 @@ class Comment(db.Model):
     blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'), nullable=False)  # Foreign Key
     name = db.Column(db.String(50), nullable=False)  # Name of the commenter
     content = db.Column(db.Text, nullable=False)
-    date_created = db.Column(db.DateTime, default=lambda: datetime.now())  # Timestamp
+    date_created = db.Column(db.DateTime, default=lambda: datetime.now(timezone('Asia/Bangkok')))  # Timestamp
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -140,20 +141,35 @@ def add_blog():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-        date_created = datetime.now()
-        new_blog = Blog(title=title, content=content, date_created=date_created)
+        #date_created = datetime.now(timezone('Asia/Bangkok'))
+        new_blog = Blog(title=title, content=content) #, date_created=date_created
         db.session.add(new_blog)
         db.session.commit()
         return redirect(url_for('blog_list'))
     return render_template('add_blog.html')
 
 # Delete Blog
-@app.route('/delete_blog/<int:id>')
+# Secret question for verification
+SECRET_QUESTION = "What is your favorite color?"
+SECRET_ANSWER = "blue"  # Replace this with your secret answer
+
+# Route to display the delete confirmation form
+@app.route('/delete_blog/<int:id>', methods=['GET', 'POST'])
 def delete_blog(id):
     blog = Blog.query.get_or_404(id)
-    db.session.delete(blog)
-    db.session.commit()
-    return redirect(url_for('blog_list'))
+
+    if request.method == 'POST':
+        # Check the secret answer
+        user_answer = request.form.get('secret_answer', '').strip().lower()
+        if user_answer == SECRET_ANSWER.lower():
+            db.session.delete(blog)
+            db.session.commit()
+            flash("Blog deleted successfully.", "success")
+            return redirect(url_for('blog_list'))
+        else:
+            flash("Incorrect answer to the secret question.", "error")
+
+    return render_template('delete_blog.html', blog=blog, question=SECRET_QUESTION)
 
 # Add comment
 @app.route('/add_comment/<int:blog_id>', methods=['POST'])

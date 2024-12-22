@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 {% block title %}Thien Nguyen - Blog List{% endblock %}
-{% block header %}
-    <h2>BLOG LIST</h2>
-    <h1>Be honest with yourself</h1>
-{% endblock %}
 {% block content %}
-<h2>All Blogs</h2>
-{% for blog in blogs %}
-    <div>
-        <h3>{{ blog.title }}</h3>
-        <p>{{ blog.content[:100] }}...</p>
-        <p><small>Published on {{ blog.date_created.strftime('%B %d, %Y %H:%M') }}</small></p>
-        <a href="{{ url_for('blog_detail', id=blog.id) }}">Read More</a>
-        | <a href="{{ url_for('delete_blog', id=blog.id) }}">Delete</a>
+    <div style="margin-bottom: 20px; text-align: left;">
+        <a href="{{ url_for('add_blog') }}"
+           style="text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; border-radius: 5px; font-size: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
+           Add Blog
+        </a>
     </div>
+
+{% for blog in blogs %}
+    <div style="max-width: 1600px; margin: 20px auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+        <h3 style="color: #2C3E50; margin-bottom: 10px;">{{ blog.title }}</h3>
+        <p style="color: #4F4F4F; line-height: 1.6;">{{ blog.content[:100] }}...</p>
+        <p style="font-size: 12px; color: #888; margin-top: 10px;">
+            <small>Published on {{ blog.date_created.strftime('%B %d, %Y %H:%M') }}</small>
+        </p>
+        <div style="margin-top: 20px;">
+            <a href="{{ url_for('blog_detail', id=blog.id) }}" style="text-decoration: none; color: white; background-color: #3498db; padding: 10px 15px; border-radius: 5px; font-size: 14px; margin-right: 10px; display: inline-block;">Read More</a>
+            <!--
+            <a href="{{ url_for('delete_blog', id=blog.id) }}" style="text-decoration: none; color: white; background-color: #e74c3c; padding: 10px 15px; border-radius: 5px; font-size: 14px; display: inline-block;">Delete</a>
+            -->
+        </div>
+    </div>
+
 {% else %}
-    <p>No blogs yet.</p>
+    <div class="container">
+        <p>No blogs yet.</p>
+    </div>
 {% endfor %}
-<a href="{{ url_for('add_blog') }}">Add one!</a>
+
+
 {% endblock %}

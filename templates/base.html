@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Thien Nguyen Portfolio - Home{% endblock %}</title>
+    <link rel="icon" href="../static/images/simple_icon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="header-container">
+        <div class="header-container row-1">
             {% block header %}
-                <h2>THIEN NGUYEN</h2>
                 <h1>Be honest with yourself</h1>
             {% endblock %}
         </div>
-        <nav class="top-nav">
+        <nav class="top-nav row-2">
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('about') }}">About</a>
         </nav>
@@ -29,11 +29,16 @@
 
     <!-- Left Navigation Bar -->
     <aside class="side-nav">
+        <div style="text-align: center;">
+            <img src="../static/images/simple_icon.ico" style="width:50%; height:auto;">
+        </div>
+
+        <a href="{{ url_for('blog_list') }}">Blogs</a>
         <a href="{{ url_for('resume') }}">Resume</a>
         <a href="{{ url_for('skills') }}">Skills</a>
         <a href="{{ url_for('projects') }}">Projects</a>
-        <a href="{{ url_for('blog_list') }}">Blogs</a>
         <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="https://chatgpt.com/g/g-674c51f8fc888191965bd78bfd855b5b-cissp-sherpa" target="_blank"><i class="fas fa-robot"></i> ChatGPT CISSP</a>
         <a href="https://www.linkedin.com/in/nguyen-duc-thien" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/thien0511" target="_blank"><i class="fab fa-github"></i> GitHub</a>
     </aside>

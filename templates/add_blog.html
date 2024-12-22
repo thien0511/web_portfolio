@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}Thien Nguyen - Add Blog{% endblock %}
-{% block header %}
-    <h2>ADD BLOG</h2>
-    <h1>Be honest with yourself</h1>
-{% endblock %}
 {% block content %}
-<h2>Add New Blog</h2>
-<form method="POST">
-    <label>Title:</label><br>
-    <input type="text" name="title" required><br><br>
-    <label>Content:</label><br>
-    <textarea name="content" rows="5" required></textarea><br><br>
-    <button type="submit">Add Blog</button>
+<h2 style="text-align: center; color: #34495e; font-family: Arial, sans-serif; margin-bottom: 20px;">Add New Blog</h2>
+<form method="POST" style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+    <label for="title" style="display: block; font-weight: bold; margin-bottom: 10px; color: #2C3E50;">Title:</label>
+    <input type="text" name="title" id="title" placeholder="Enter blog title" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 20px; box-sizing: border-box;">
+
+    <label for="content" style="display: block; font-weight: bold; margin-bottom: 10px; color: #2C3E50;">Content:</label>
+    <textarea name="content" id="content" rows="5" placeholder="Write your blog content here..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 20px; box-sizing: border-box;"></textarea>
+
+    <div style="display: flex; justify-content: space-between; gap: 10px;">
+        <button type="submit" style="flex: 1; padding: 10px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Add Blog</button>
+        <button type="button" onclick="window.location.href='{{ url_for('blog_list') }}'" style="flex: 1; padding: 10px; background-color: #e74c3c; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Cancel</button>
+    </div>
 </form>
+
+
+
 {% endblock %}
